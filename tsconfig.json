@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+
+    "module": "commonjs",     //Módulo de saída do código compilado
+    "target": "esnext",       //Versão do JavaScript de saída
+
+    "outDir": "./dist",         //Diretório de saída dos arquivos compilados
+    "rootDir": "./src",         //Diretório raiz dos arquivos de entrada
+    "types": [],
+ 
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Recommended Options
+    "strict": true,
+    "skipLibCheck": true,
+  }
+}
