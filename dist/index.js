@@ -12,4 +12,3 @@ app.use("/", login_1.default);
 app.listen(process.env.PORT || 8081, () => {
     console.log(`Servidor rodando na porta ${process.env.PORT}: http://localhost:${process.env.PORT}`);
 });
-//# sourceMappingURL=index.js.map

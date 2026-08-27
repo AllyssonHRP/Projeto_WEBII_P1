@@ -1,0 +1,1 @@
+{"version":3,"file":"Situations.d.ts","sourceRoot":"","sources":["../../src/entity/Situations.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,IAAI,EAAE,MAAM,SAAS,CAAC;AAE/B,qBACa,SAAS;IAElB,EAAE,EAAG,MAAM,CAAC;IAGZ,aAAa,EAAG,MAAM,CAAC;IAGvB,KAAK,EAAG,IAAI,EAAE,CAAC;IAGf,SAAS,EAAG,MAAM,CAAC;IAGnB,SAAS,EAAG,MAAM,CAAC;CACtB"}

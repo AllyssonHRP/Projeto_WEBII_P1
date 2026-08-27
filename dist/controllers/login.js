@@ -16,4 +16,3 @@ router.get("/", (req, res) => {
 });
 // Exportar a instrução da rota
 exports.default = router;
-//# sourceMappingURL=login.js.map
