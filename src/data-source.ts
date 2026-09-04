@@ -1,5 +1,7 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
+import { User } from "./entity/Users"
+import {Situation} from "./entity/Situations"
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -14,7 +16,13 @@ export const AppDataSource = new DataSource({
     database: process.env.DB_DATABASE || "nodeapi",
     synchronize: false,
     logging: true,
-    entities: [],
+    entities: [Situation, User],
     subscribers: [],
     migrations: [__dirname + "/migration/*.js"],
-})
+});
+
+AppDataSource.initialize().then(() => {
+  console.log("Conexão com o banco de dados estabelecida com sucesso!");
+}).catch((err) => {
+  console.error("Erro na conexão com o banco de dados!", err)
+});
