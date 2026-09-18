@@ -25,7 +25,7 @@ router.get("/situations/:id", async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const situationRepository = AppDataSource.getRepository(Situation);
-    const situations = await situationRepository.findOneBy({ id: parseInt(id) })
+    const situations = await situationRepository.findOneBy({ id: parseInt(String(id), 10) })
     if (!situations) {
       res.status(404).json({
         messagem: "Situação não encontrada!",
@@ -48,7 +48,7 @@ router.put("/situations/:id", async (req: Request, res: Response) => {
     const { id } = req.params;
     var data = req.body;
     const situationRepository = AppDataSource.getRepository(Situation);
-    const situations = await situationRepository.findOneBy({ id: parseInt(id) })
+    const situations = await situationRepository.findOneBy({ id: parseInt(String(id), 10) })
     if (!situations) {
       res.status(404).json({
         messagem: "Situação não encontrada!",
@@ -74,7 +74,7 @@ router.delete("/situations/:id", async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const situationRepository = AppDataSource.getRepository(Situation);
-    const situations = await situationRepository.findOneBy({ id: parseInt(id) })
+    const situations = await situationRepository.findOneBy({ id: parseInt(String(id), 10) })
     if (!situations) {
       res.status(404).json({
         messagem: "Situação não encontrada!",

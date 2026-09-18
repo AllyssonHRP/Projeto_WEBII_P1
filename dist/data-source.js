@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppDataSource = void 0;
+require("dotenv/config");
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const Users_1 = require("./entity/Users");
