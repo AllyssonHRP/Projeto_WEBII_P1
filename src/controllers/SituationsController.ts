@@ -9,8 +9,46 @@ const router = express.Router()
 router.get("/situations", async (req: Request, res: Response) => {
   try {
     const situationRepository = AppDataSource.getRepository(Situation);
-    const situations = await situationRepository.find();
-    res.status(200).json(situations)
+
+    // Obter o número da página a partir da query string, padrão é 1
+    const page = Number(req.query.page) || 1;
+
+    // Limite de situações por página
+
+    const limite = 1;
+    const totalSituations = await situationRepository.count();
+    if (totalSituations === 0) {
+      res.status(400).json({
+        messagem: "Nenhuma situação encontrada!",
+      });
+      return;
+    }
+    // Calcular o número da última página
+    const lastPage = Math.ceil(totalSituations / limite);
+    if (page > lastPage) {
+      res.status(400).json({
+        messagem: "Página não encontrada! ${lastPage} páginas disponíveis.",
+      });
+      return;
+    }
+    // Calcular o offset para a consulta
+    const offset = (page - 1) * limite;
+    // Buscar as situações com paginação
+    const situations = await situationRepository.find(
+      {
+        take: limite,
+        skip: offset,
+        order: {
+          id: "DESC",
+        }
+      }
+    );
+    res.status(200).json({
+      currentPage: page,
+      lastPage,
+      totalSituations,
+      situations,
+  });
     return;
   } catch (error) {
     res.status(500).json({
